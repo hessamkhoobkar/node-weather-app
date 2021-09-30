@@ -1,17 +1,15 @@
 console.log("Runing JS");
 
 const weatherReq = (location, callback) => {
-  fetch(`http://localhost:3000/weather?address=${location}`).then(
-    (response) => {
-      response.json().then((data) => {
-        if (data.error) {
-          callback(data.error, undefined);
-        } else {
-          callback(undefined, data);
-        }
-      });
-    }
-  );
+  fetch(`/weather?address=${location}`).then((response) => {
+    response.json().then((data) => {
+      if (data.error) {
+        callback(data.error, undefined);
+      } else {
+        callback(undefined, data);
+      }
+    });
+  });
 };
 
 const form = document.querySelector("form");
